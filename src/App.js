@@ -3,7 +3,15 @@ import { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 
-class App extends Component() {
+class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      name: "Sashank",
+    };
+  }
+
   render() {
     return (
       <div className="App">
@@ -19,7 +27,7 @@ class App extends Component() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Learn React
+            Hello {this.state.name}
           </a>
         </header>
       </div>
