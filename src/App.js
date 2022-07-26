@@ -23,7 +23,16 @@ class App extends Component {
           </p>
           <div
             onClick={() => {
-              this.setState({ name: "Joe" });
+              this.setState(
+                () => {
+                  return {
+                    name: "Kal",
+                  };
+                },
+                () => {
+                  console.log(this.state);
+                }
+              );
             }}
             className="App-link"
           >
