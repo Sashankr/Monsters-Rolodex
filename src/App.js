@@ -21,14 +21,14 @@ class App extends Component {
           <p>
             Edit <code>src/App.js</code> and save to reload.
           </p>
-          <a
+          <div
+            onClick={() => {
+              this.setState({ name: "Joe" });
+            }}
             className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
           >
             Hello {this.state.name}
-          </a>
+          </div>
         </header>
       </div>
     );
