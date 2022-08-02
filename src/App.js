@@ -8,28 +8,46 @@ class App extends Component {
     super();
 
     this.state = {
-      name: "Sashank",
+      monsters: [],
     };
+    console.log("constructor");
+  }
+
+  componentDidMount() {
+    console.log("componentDidMount");
+
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then((response) => response.json())
+      .then((users) => {
+        this.setState(
+          () => {
+            return {
+              monsters: users,
+            };
+          },
+          () => {}
+        );
+      });
   }
 
   render() {
+    console.log("render");
+
     return (
       <div className="App">
-        <header className="App-header">
-          <h2>Monsters Rolodex</h2>
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Hello {this.state.name}
-          </a>
-        </header>
+        <input
+          type="search"
+          placeholder="search monsters"
+          onChange={(event) => {
+            const filteredMonsters = this.state.monsters.filter((monster) => {
+              return monster.name.includes(event.target.value);
+            });
+            console.log(filteredMonsters);
+          }}
+        />
+        {this.state.monsters.map((data) => {
+          return <h1 key={data.id}>{data.name}</h1>;
+        })}
       </div>
     );
   }
