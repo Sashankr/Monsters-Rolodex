@@ -59,7 +59,10 @@ import { useState } from "react";
 // }
 
 const App = () => {
+  console.log("render");
+
   const [searchField, setSearchField] = useState("");
+  console.log(searchField);
   const onSearchChange = (event) => {
     const searchFieldText = event.target.value.toLowerCase();
     setSearchField(searchFieldText);
