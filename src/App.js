@@ -8,7 +8,6 @@ const App = () => {
   const [searchField, setSearchField] = useState("");
   const [monsters, setMonsters] = useState([]);
   const [filteredMonsters, setFilteredMonsters] = useState(monsters);
-  const [count, setCount] = useState(0);
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users")
@@ -31,15 +30,9 @@ const App = () => {
     setSearchField(searchFieldText);
   };
 
-  const incrementCount = () => {
-    setCount((count) => count + 1);
-  };
-
   return (
     <div>
-      <h1 className="app-title">
-        Monsters Rolodex <span onClick={incrementCount}>{count}</span>{" "}
-      </h1>
+      <h1 className="app-title">Monsters Rolodex</h1>
       <SearchBox
         onChangeHandler={onSearchChange}
         placeholder={"search monsters"}
